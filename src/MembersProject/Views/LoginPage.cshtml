@@ -1,0 +1,60 @@
+﻿@using MembersProject.Controllers
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "Master.cshtml";
+    var step = Session["loginStep"] != null ? Session["loginStep"].ToString() : "1";
+
+}
+
+<h1> @CurrentPage.Name </h1>
+@if (Members.IsLoggedIn())
+{
+    // if member is already logged in make redirect to /member-area
+    Response.Redirect("/member-area");
+}
+else
+{
+    using (Html.BeginUmbracoForm<MembersController>("HandleLogin", null))
+    {
+        //display correct step header 
+        if (step == "2")
+        {
+            <h2>Step 2</h2>
+        }
+        else
+        {
+            <h2>Step 1</h2>
+        }
+        <div class="form">
+            @if (step == "2")
+            {
+                // if it's step 2 display just PIN field
+                <div class="form-group">
+                    <label for="password">PIN</label>
+                    <input type="password" class="form-control" id="password" name="Password">
+                </div>
+            }
+            else
+            {
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="Username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="Password">
+                </div>
+            }
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Login</button>
+                @if (TempData["Status"] != null)
+                {
+                    <p>
+                        @TempData["Status"]
+                    </p>
+                }
+            </div>
+        </div>
+    }
+}

@@ -1,0 +1,17 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "Master.cshtml";
+}
+
+@if (Members.IsLoggedIn())
+{
+    Members.Logout();
+    <h2>Logout successful</h2>
+    <a href="/Login">Login</a>
+}
+else
+{
+    //if members is not logged in make redirect to /Logion page
+    Response.Redirect("/Login");
+}
+

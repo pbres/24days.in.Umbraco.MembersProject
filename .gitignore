@@ -15,3 +15,13 @@ Cached/
 # Make sure to include details from VisualStudio.gitignore BEFORE this
 !**/App_Data/[Pp]ackages/
 !**/[Uu]mbraco/[Dd]eveloper/[Pp]ackages
+src/packages/
+src/MembersProject/umbraco_client/Installer/Images/bg-img.png
+src/MembersProject/umbraco_client/
+src/MembersProject/umbraco/
+src/MembersProject/Views/Partials/Grid/
+src/MembersProject/bin/
+src/MembersProject/Config/
+src/MembersProject/App_Data/
+src/MembersProject/obj/
+src/MembersProject/App_Browsers/
